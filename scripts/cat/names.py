@@ -35,6 +35,7 @@ class Name():
     pelt_suffixes = {
         'TwoColour': ['patch', 'spot', 'splash', 'patch', 'spots'],
         'Tabby': ['stripe', 'feather', 'leaf', 'stripe', 'shade'],
+        'Custom': ['stripe', 'feather', 'leaf', 'stripe', 'shade', 'custom'],
         'Marbled': ['stripe', 'feather', 'leaf', 'stripe', 'shade'],
         'Speckled': ['dapple', 'speckle', 'spot', 'speck', 'freckle'],
         'Bengal': ['dapple', 'speckle', 'spots', 'speck', 'freckle'],

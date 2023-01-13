@@ -252,7 +252,8 @@ for x in [
     'tortiecoloursticked', 'tortiecolourssmoke', 'tortiecoloursrosette', 'tortiecoloursspeckled',
     'tortiesextrasolid', 'tortiesextratabby', 'tortiesextrabengal', 'tortiesextramarbled', 'tortiesextraticked',
     'tortiesextrasmoke', 'tortiesextrarosette', 'tortiesextraspeckled',
-    'medcatherbs', 'medcatherbsextra', 'lineartdf', 'eyes_df', 'eyesextra_df'
+    'medcatherbs', 'medcatherbsextra', 'lineartdf', 'eyes_df', 'eyesextra_df',
+    'customcolours', 'customextra'
 
 ]:
     sprites.spritesheet(f"sprites/{x}.png", x)
@@ -415,6 +416,19 @@ for a, i in enumerate(['LIGHTBROWN', 'BROWN', 'DARKBROWN']):
     sprites.make_group('speckledcolours2', (a, 2), f'bengal{i}')
     sprites.make_group('speckledextra2', (a, 2), f'bengalextra{i}', sprites_y=2)
 # new torties
+
+# custom (solid)
+for a, i in enumerate(['WHITE', 'PALEGREY', 'SILVER', 'GREY', 'DARKGREY', 'BLACK']):
+    sprites.make_group('customcolours', (a, 0), f'custom{i}')
+    sprites.make_group('customextra', (a, 0), f'customextra{i}', sprites_y=2)
+for a, i in enumerate(['PALEGINGER', 'GOLDEN', 'GINGER', 'DARKGINGER', 'CREAM']):
+    sprites.make_group('customcolours', (a, 1), f'custom{i}')
+    sprites.make_group('customextra', (a, 1), f'customextra{i}', sprites_y=2)
+for a, i in enumerate(['LIGHTBROWN', 'BROWN', 'DARKBROWN']):
+    sprites.make_group('customcolours', (a, 2), f'custom{i}')
+    sprites.make_group('customextra', (a, 2), f'customextra{i}', sprites_y=2)
+
+
 # solids
 for a, i in enumerate(['PALEONE', 'PALETWO', 'PALETHREE', 'PALEFOUR']):
     sprites.make_group('tortiecolourssolid', (a, 0), f'tortiesolid{i}')

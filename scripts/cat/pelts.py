@@ -231,11 +231,40 @@ class Bengal():
         else:
             return f"{self.colour} bengal{self.length}"
 
+## custom class
+
+class custom():
+    name = "custom"
+    sprites = {1: 'custom', 2: 'white'}
+    white_patches = [
+        'LITTLE', 'LITTLECREAMY', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'BLAZE',
+        'BIB', 'VEE', 'PAWS', 'BELLY', 'TAILTIP', 'TOES', 'BROKENBLAZE', 'LILTWO',
+        'SCOURGE', 'TOESTAIL', 'RAVENPAW', 'HONEY',
+        'TUXEDO', 'TUXEDOCREAMY', 'FANCY', 'UNDERS', 'DAMIEN', 'SKUNK',
+        'MITAINE', 'SQUEAKS', 'STAR',
+        'ANY', 'ANYCREAMY', 'ANY2', 'ANY2CREAMY', 'BROKEN', 'FRECKLES', 'RINGTAIL',
+        'HALFFACE', 'PANTS2', 'GOATEE', 'PRINCE', 'FAROFA', 'MISTER', 'PANTS',
+        'REVERSEPANTS', 'HALFWHITE', 'APPALOOSA', 'PIEBALD', 'CURVED', 'GLASS',
+        'VAN', 'VANCREAMY', 'ONEEAR', 'LIGHTSONG', 'TAIL', 'HEART', 'MOORISH',
+        'MASKMANTLE', 'APRON', 'CAPSADDLE',
+        'COLOURPOINT', 'COLOURPOINTCREAMY', 'RAGDOLL', 'VITILIGO', 'VITILIGO2'
+    ]
+    def __init__(self, colour, white, length):
+        self.white = white  # boolean; does cat have white on it or no
+        self.colour = colour
+        self.length = length
+
+    def __repr__(self):
+        if self.white:
+            return f"white and {self.colour}{self.length} custom"
+        else:
+            return self.colour + self.length + " custom"
+
 class Tortie():
     name = "Tortie"
     sprites = {1: 'tortie', 2: 'white'}
     white_patches = [
-        'LITTLE', 'LITTLECREAMY', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'BLAZE', 
+        'LITTLE', 'LITTLECREAMY', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'BLAZE',
         'BIB', 'VEE', 'PAWS', 'BELLY', 'TAILTIP', 'TOES', 'BROKENBLAZE', 'LILTWO',
         'SCOURGE', 'TOESTAIL', 'RAVENPAW', 'HONEY',
         'TUXEDO', 'TUXEDOCREAMY', 'FANCY', 'UNDERS', 'DAMIEN', 'SKUNK',  'MITAINE', 'SQUEAKS', 'STAR',
@@ -292,7 +321,7 @@ tortiepatterns = ['tortiesolid', 'tortietabby', 'tortiebengal', 'tortiemarbled',
 patch_colours = ['PALEONE', 'PALETWO', 'PALETHREE', 'PALEFOUR', 'GOLDONE', 'GOLDTWO',
     'GOLDTHREE', 'GOLDFOUR', 'GINGERONE', 'GINGERTWO', 'GINGERTHREE', 'GINGERFOUR',
     'DARKONE', 'DARKTWO', 'DARKTHREE', 'DARKFOUR', 'CREAMONE', 'CREAMTWO', 'CREAMTHREE', 'CREAMFOUR']
-tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled']
+tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'custom']
 tortiecolours = ["SILVER", "GREY", "DARKGREY", "BLACK", "LIGHTBROWN", "BROWN", "DARKBROWN"]
 
 pelt_length = ["short", "medium", "medium", "long"]
@@ -322,9 +351,9 @@ collars = [
 ]
 
 pelt_names_F = ["SingleColour", "SingleColour", "TwoColour", "Tabby", "Tortie", "Calico",
-    "Tabby", "TwoColour", "Speckled", "Marbled", "Bengal", "Rosette", "Smoke", "Ticked"]
+    "Tabby", "TwoColour", "Speckled", "Marbled", "Bengal", "Rosette", "Smoke", "Ticked", "custom"]
 pelt_names_M = ["SingleColour", "SingleColour", "TwoColour", "Tabby", "Tabby", "Speckled",
-    "TwoColour", "Marbled", "Bengal", "Rosette", "Smoke", "Ticked"]
+    "TwoColour", "Marbled", "Bengal", "Rosette", "Smoke", "Ticked", "custom"]
 
 # SPRITE NAMES
 single_colours = [
@@ -431,6 +460,17 @@ def choose_pelt(gender,colour=None,white=None,pelt=None,length=None,determined=F
             return Bengal(choice(pelt_colours), white, length)
         else:
             return Bengal(colour, white, length)
+## custom
+
+    elif pelt == "custom":
+        if colour is None and white is None:
+            return custom(choice(pelt_colours), choice([False, True]), length)
+        elif colour is None:
+            return custom(choice(pelt_colours), white, length)
+        else:
+            return custom(colour, white, length)
+
+
     elif pelt == "Tortie":
         if white is None:
             return Tortie(choice([False, True]), length)
@@ -470,6 +510,8 @@ def describe_color(pelt, tortiecolour, tortiepattern, white_patches):
             color_name = color_name + ' ticked tabby'
         elif pelt.name == "Smoke":
             color_name = color_name + ' smoke'
+        elif pelt.name == "custom":
+            color_name = color_name + ' custom'
 
         elif pelt.name == "Tortie":
             if tortiepattern not in ["tortiesolid", "tortiesmoke"]:
